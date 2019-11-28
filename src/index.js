@@ -4,7 +4,12 @@ import './index.css';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 import store from './store';
-import {actions} from "./ducks/orders"
+import {actions as actionsFreezer} from "./ducks/freezer";
+import * as flavors from "./constants/icecream_flavors";
+
+setInterval(()=> {
+    store.dispatch(actionsFreezer.addIceCream(flavors.STRAWBERRY, 1))
+}, 1500)
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
